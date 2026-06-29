@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "company/index"
+  get "company/new"
+  get "company/create"
+  get "company/edit"
+  get "company/update"
+  get "company/delete"
   devise_for :candidates
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
