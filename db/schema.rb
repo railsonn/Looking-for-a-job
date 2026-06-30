@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_30_001635) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_30_003254) do
+  create_table "applications", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "candidate_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_applications_on_candidate_id"
+    t.index ["company_id"], name: "index_applications_on_company_id"
+  end
+
   create_table "candidates", force: :cascade do |t|
     t.string "name"
     t.string "lastName"
@@ -41,5 +51,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_30_001635) do
     t.string "contract_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
+
+  add_foreign_key "applications", "candidates"
+  add_foreign_key "applications", "companies"
+  add_foreign_key "jobs", "companies"
 end
