@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "candidate/index"
+  get "candidate/new"
+  get "candidate/edit"
+  get "candidate/update"
+  get "candidate/delete"
+  get "candidate/create"
   get "job/index"
   get "job/new"
   get "job/create"
