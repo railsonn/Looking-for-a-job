@@ -278,6 +278,8 @@ GEM
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
     redis-client (0.30.0)
       connection_pool
     regexp_parser (2.12.0)
@@ -425,6 +427,7 @@ DEPENDENCIES
   pundit
   rails (~> 8.0.5)
   ransack
+  redis (~> 5.0)
   rubocop-rails-omakase
   selenium-webdriver
   sidekiq

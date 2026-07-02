@@ -22,6 +22,7 @@ gem "devise"
 
 
 gem "sidekiq"
+gem "redis", "~> 5.0"
 
 
 # gems para o projeto 
