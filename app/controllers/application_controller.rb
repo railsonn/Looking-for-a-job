@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= Candidate.find_by(id: session[:user_id])
   end
-  
+
   allow_browser versions: :modern
 end
