@@ -21,6 +21,8 @@ gem "jbuilder"
 gem "devise"
 
 
+gem "sidekiq"
+
 
 # gems para o projeto 
 
