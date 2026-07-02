@@ -20,6 +20,17 @@ gem "jbuilder"
 # autenticacao de usuario
 gem "devise"
 
+
+
+# gems para o projeto 
+
+gem "pundit"
+gem "ransack"
+gem "pagy"
+gem "image_processing"
+gem "tailwindcss"
+
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
