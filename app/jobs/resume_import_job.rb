@@ -3,8 +3,7 @@ class ResumeImportJob < ApplicationJob
 
   def perform(resume_id)
     resume = Resume.find(resume_id)
-    resume.import!
-    rescue ActiveRecord::RecordNotFound => e
-      Rails.logger.error("Resume with ID #{resume_id} not found: #{e.message}")
+
+    ResumeImporter.new(resume).call
   end
 end
