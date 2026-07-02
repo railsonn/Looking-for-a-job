@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+
+  Rails.application.routes.draw do
+    mount Sidekiq::Web => "/sidekiq"
+  end
+
   resources :jobs
   resources :companies
   resources :candidates
-  get "job/index"
-  get "job/new"
-  get "job/create"
-  get "job/delete"
-  get "job/edit"
-  get "job/update"
-  get "company/index"
-  get "company/new"
-  get "company/create"
-  get "company/edit"
-  get "company/update"
-  get "company/delete"
+
   devise_for :candidates
+
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
