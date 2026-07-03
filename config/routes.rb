@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  get "resumes/index"
+  get "resumes/new"
+  get "resumes/edit"
+  get "resumes/show"
   require "sidekiq/web"
 
   Rails.application.routes.draw do
+  get "resumes/index"
+  get "resumes/new"
+  get "resumes/edit"
+  get "resumes/show"
     mount Sidekiq::Web => "/sidekiq"
   end
 

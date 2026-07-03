@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_02_190504) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_02_193201) do
   create_table "applications", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "candidate_id", null: false
@@ -58,14 +58,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_02_190504) do
   create_table "resumes", force: :cascade do |t|
     t.string "file"
     t.string "status"
-    t.integer "users_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_resumes_on_users_id"
+    t.integer "candidate_id"
+    t.index ["candidate_id"], name: "index_resumes_on_candidate_id"
   end
 
   add_foreign_key "applications", "candidates"
   add_foreign_key "applications", "companies"
   add_foreign_key "jobs", "companies"
-  add_foreign_key "resumes", "users", column: "users_id"
+  add_foreign_key "resumes", "candidates"
 end
