@@ -4,15 +4,20 @@ class ResumeImportJob < ApplicationJob
   def perform(resume_id)
     resume = Resume.find(resume_id)
 
-    ResumeImporter.new(resume).call
+    resume.processing!
 
-    candidate = Candidate.first
-    resume = candidate.resumes.create!(status: :pending)
+    # Extrair texto do PDF
+    text = PdfExtractor.call(resume.file)
 
-    resume.file.attach(
-      io: File.open("/caminho/curriculo.pdf"),
-      filename: "curriculo.pdf",
-      content_type: "application/pdf"
+    # Chamar IA
+    data = ResumeParser.call(text)
+
+    resume.update!(
+      raw_text: text,
+      parsed_data: data,
+      status: :processed
     )
+  rescue
+    resume.failed!
   end
 end
