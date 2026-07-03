@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_02_193201) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_03_191342) do
   create_table "applications", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "candidate_id", null: false
@@ -56,11 +56,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_02_193201) do
   end
 
   create_table "resumes", force: :cascade do |t|
-    t.string "file"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "candidate_id"
+    t.text "raw_text"
+    t.json "parsed_data"
     t.index ["candidate_id"], name: "index_resumes_on_candidate_id"
   end
 
