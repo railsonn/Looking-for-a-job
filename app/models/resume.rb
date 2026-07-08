@@ -1,5 +1,5 @@
 class Resume < ApplicationRecord
-  belongs_to :candidates
+  belongs_to :candidate
   
   has_one_attached :file
 end
