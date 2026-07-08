@@ -11,11 +11,15 @@ class ResumeImportJob < ApplicationJob
 
     # Chamar IA
     data = ResumeParser.call(text)
+    
+    user = User.first 
 
-    resume.update!(
-      raw_text: text,
-      parsed_data: data,
-      status: :processed
+    resume = user.resumes.create!(status: "pending")
+
+    resume.file.attach(
+      io: File.open("/home/seu_usuario/Downloads/clientes_teste"),
+      filename: "teste.pdf",
+      content_type: "application/pdf"
     )
   rescue
     resume.failed!
