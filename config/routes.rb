@@ -7,11 +7,11 @@ Rails.application.routes.draw do
         get :preview
       end
     end
+    
     mount Sidekiq::Web => "/sidekiq"
   end
 
-  resources :resumes, only: [:index, :new, :create, :show, :edit, :update, :preview]
-
+  
   resources :jobs
   resources :companies
   resources :candidates

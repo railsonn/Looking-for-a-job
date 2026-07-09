@@ -10,27 +10,33 @@ class ResumesController < ApplicationController
 
   def create
     @resume = Resume.new(resume_params)
-    
-    if @resume.save
-      ResumeImportJob.perform_later(@resume.id)
-      redirect_to resumes_path, notice: 'Resume was successfully uploaded and is being processed.'
-    else
-      render :new
+    @resume.candidate = Candidate.first
+
+    unless @resume.save
+      puts @resume.errors.full_messages
+      render :new, status: :unprocessable_entity
+      return
     end
 
-    # Extrair texto do PDF
     pdf = PDF::Reader.new(
-      StringIO.new(resume.file.download)
+      StringIO.new(@resume.file.download)
     )
+
+    puts @resume.file.attached?
+    # Extrair texto do PDF
 
     text = pdf.pages.map(&:text).join("\n")
 
-    puts "Texto extraído do PDF: #{text} ----------------------------------------"
+    @resume.update(status: "completed", raw_text: text)
 
-    @resumes = Resume.all
+    redirect_to preview_resume_path(@resume)
   end
 
   def edit
+  end
+
+  def preview
+    @resume = Resume.find(params[:id])
   end
 
   def show
