@@ -24,10 +24,11 @@ class ResumeImportJob < ApplicationJob
       status: "completed"
     )
 
+    print("Resume import completed for resume ID: #{resume.id}")
+
     rescue => e
       resume.update(status: "failed") if resume.present?
 
       Rails.logger.error e.full_message
-    end
   end
 end
