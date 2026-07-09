@@ -2,6 +2,7 @@ class ResumesController < ApplicationController
   require "pdf/reader"
 
   def index
+    @resumes = Resume.all
   end
 
   def new

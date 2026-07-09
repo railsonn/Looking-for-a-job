@@ -1,25 +1,97 @@
-<h1>Currículos</h1>
+<div class="resumes-page">
 
-<%= link_to "Importar currículo", new_resume_path, class: "btn btn-primary" %>
+  <div class="page-header">
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Status</th>
-      <th></th>
-    </tr>
-  </thead>
+    <div>
+      <h1>Currículos</h1>
+      <p>Gerencie os currículos importados para o sistema.</p>
+    </div>
 
-  <tbody>
-    <% @resumes.each do |resume| %>
-      <tr>
-        <td><%= resume.raw_text %></td>
-        <td><%= resume.status %></td>
-        <td>
-          <%= link_to "Visualizar", resume %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= link_to "Importar currículo",
+        new_resume_path,
+        class: "btn-primary" %>
+
+  </div>
+
+  <% if @resumes.any? %>
+
+    <table class="resume-table">
+
+      <thead>
+
+        <tr>
+          <th>Prévia</th>
+          <th>Status</th>
+          <th>Importado em</th>
+          <th>Ações</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <% @resumes.each do |resume| %>
+
+          <% data = resume.parsed_data || {} %>
+
+          <tr>
+
+            <td>
+
+              <% if data["nome"].present? %>
+
+                <strong><%= data["nome"] %></strong>
+
+              <% else %>
+
+                <%= truncate(resume.raw_text.to_s, length: 100) %>
+
+              <% end %>
+
+            </td>
+
+            <td>
+
+              <span class="status status-<%= resume.status %>">
+                <%= resume.status %>
+              </span>
+
+            </td>
+
+            <td>
+
+              <%= l(resume.created_at, format: "%d/%m/%Y %H:%M") %>
+
+            </td>
+
+            <td>
+
+              <%= link_to "Visualizar",
+                  preview_resume_path(resume),
+                  class: "btn-secondary" %>
+
+            </td>
+
+          </tr>
+
+        <% end %>
+
+      </tbody>
+
+    </table>
+
+  <% else %>
+
+    <div class="empty-state">
+
+      <h2>Nenhum currículo importado</h2>
+
+      <p>
+        Clique em <strong>"Importar currículo"</strong> para adicionar o primeiro currículo ao sistema.
+      </p>
+
+    </div>
+
+  <% end %>
+
+</div>
