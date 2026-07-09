@@ -1,13 +1,14 @@
 class ResumeImportJob < ApplicationJob
   queue_as :default
 
+  require "pdf-reader"
+  require "stringio"
+
   def perform(resume_id)
     resume = Resume.find(resume_id)
 
-    resume.processing!
-
     # Extrair texto do PDF
-    text = PdfExtractor.call(resume.file)
+    text = PDF::Reader.new(resume.file.download).pages.map(&:text).join("\n")
 
     # Chamar IA
     data = ResumeParser.call(text)
@@ -22,8 +23,6 @@ class ResumeImportJob < ApplicationJob
       content_type: "application/pdf"
     )
 
-    print(resume)
-  rescue
-    resume.failed!
+    print("#{resume} ---------------------------------------------------------------------------------")
   end
 end
