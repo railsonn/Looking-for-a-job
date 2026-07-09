@@ -27,7 +27,7 @@ class ResumesController < ApplicationController
 
     text = pdf.pages.map(&:text).join("\n")
 
-    @resume.update(status: "completed", raw_text: text)
+    @resume.update(status: "completed", raw_text: text, parsed_data: ResumeParser.call(text))
 
     redirect_to preview_resume_path(@resume)
   end

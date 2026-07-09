@@ -1,20 +1,147 @@
-<h1>Pré-visualização do currículo</h1>
+<div class="max-w-5xl mx-auto bg-white rounded-lg shadow p-8">
 
-<% binding.irb %>
+  <h1 class="text-3xl font-bold mb-2">
+    Pré-visualização do currículo
+  </h1>
 
-<hr>
+  <p class="text-gray-600 mb-8">
+    Revise as informações encontradas antes de confirmar a importação.
+  </p>
 
+  <% data = @resume.parsed_data || {} %>
 
-<h2>Texto extraído</h2>
+  <!-- Dados Pessoais -->
+  <div class="border rounded-lg p-5 mb-6">
+    <h2 class="text-xl font-semibold mb-4">
+      👤 Dados Pessoais
+    </h2>
 
-<div>
-  <p><%= simple_format(@resume.raw_text) %></p>
+    <p><strong>Nome:</strong> <%= data["nome"].presence || "Não encontrado" %></p>
+
+    <p><strong>E-mail:</strong> <%= data["email"].presence || "Não encontrado" %></p>
+
+    <p><strong>Telefone:</strong> <%= data["phone"].presence || "Não encontrado" %></p>
+
+    <p><strong>Cidade:</strong> <%= data["city"].presence || "Não encontrada" %></p>
+
+  </div>
+
+  <!-- Resumo -->
+  <div class="border rounded-lg p-5 mb-6">
+    <h2 class="text-xl font-semibold mb-4">
+      📝 Resumo Profissional
+    </h2>
+
+    <%= simple_format(data["summary"].presence || "Não encontrado") %>
+
+  </div>
+
+  <!-- Formação -->
+  <div class="border rounded-lg p-5 mb-6">
+
+    <h2 class="text-xl font-semibold mb-4">
+      🎓 Formação Acadêmica
+    </h2>
+
+    <% if data["education"].present? %>
+
+      <ul class="list-disc ml-6">
+
+        <% Array(data["education"]).each do |education| %>
+
+          <li><%= education %></li>
+
+        <% end %>
+
+      </ul>
+
+    <% else %>
+
+      <p>Nenhuma formação encontrada.</p>
+
+    <% end %>
+
+  </div>
+
+  <!-- Experiência -->
+  <div class="border rounded-lg p-5 mb-6">
+
+    <h2 class="text-xl font-semibold mb-4">
+      💼 Experiência Profissional
+    </h2>
+
+    <% if data["experience"].present? %>
+
+      <ul class="list-disc ml-6">
+
+        <% Array(data["experience"]).each do |experience| %>
+
+          <li><%= experience %></li>
+
+        <% end %>
+
+      </ul>
+
+    <% else %>
+
+      <p>Nenhuma experiência encontrada.</p>
+
+    <% end %>
+
+  </div>
+
+  <!-- Habilidades -->
+  <div class="border rounded-lg p-5 mb-6">
+
+    <h2 class="text-xl font-semibold mb-4">
+      🚀 Habilidades
+    </h2>
+
+    <% if data["skills"].present? %>
+
+      <div class="flex flex-wrap gap-2">
+
+        <% Array(data["skills"]).each do |skill| %>
+
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+            <%= skill %>
+          </span>
+
+        <% end %>
+
+      </div>
+
+    <% else %>
+
+      <p>Nenhuma habilidade encontrada.</p>
+
+    <% end %>
+
+  </div>
+
+  <!-- Texto Original -->
+  <div class="border rounded-lg p-5 mb-8">
+
+    <h2 class="text-xl font-semibold mb-4">
+      📄 Texto extraído do PDF
+    </h2>
+
+    <div class="bg-gray-100 rounded p-4 max-h-80 overflow-y-auto whitespace-pre-wrap">
+      <%= @resume.raw_text %>
+    </div>
+
+  </div>
+
+  <div class="flex justify-end gap-3">
+
+    <%= link_to "Cancelar",
+        new_resume_path,
+        class: "px-4 py-2 border rounded" %>
+
+    <%= button_to "Confirmar Importação",
+        "#",
+        class: "px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" %>
+
+  </div>
+
 </div>
-
-
-<hr>
-
-
-<h2>Confirmar importação?</h2>
-
-<%= link_to "Cancelar", new_resume_path %>
