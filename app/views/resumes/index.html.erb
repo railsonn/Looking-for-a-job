@@ -1,2 +1,12 @@
-<h1>Resumes#index</h1>
+<h1>Preview de resume#index</h1>
 <p>Find me in app/views/resumes/index.html.erb</p>
+
+<% if @resumes.any? %>
+  <ul>
+    <% @resumes.each do |resume| %>
+      <li><%= resume.title %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No resumes found.</p>
+<% end %>
