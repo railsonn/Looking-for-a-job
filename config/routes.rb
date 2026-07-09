@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  get "resumes/index"
-  get "resumes/new"
-  get "resumes/edit"
-  get "resumes/show"
   require "sidekiq/web"
 
   Rails.application.routes.draw do
-  get "resumes/index"
-  get "resumes/new"
-  get "resumes/edit"
-  get "resumes/show"
+    resources :resumes, only: [:index, :new, :create, :show, :edit, :update] do
+      member do
+        get :preview
+      end
+    end
     mount Sidekiq::Web => "/sidekiq"
   end
+
+  resources :resumes, only: [:index, :new, :create, :show, :edit, :update, :preview]
 
   resources :jobs
   resources :companies

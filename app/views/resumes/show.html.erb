@@ -1,2 +1,18 @@
-<h1>Resumes#show</h1>
-<p>Find me in app/views/resumes/show.html.erb</p>
+<h1><%= @resume.name %></h1>
+
+<p>
+<strong>Email:</strong>
+<%= @resume.email %>
+</p>
+
+<p>
+<strong>Telefone:</strong>
+<%= @resume.phone %>
+</p>
+
+<p>
+<strong>Resumo:</strong>
+<%= @resume.summary %>
+</p>
+
+<%= link_to "Editar", edit_resume_path(@resume) %>

@@ -1,5 +1,14 @@
-<h1>Resumes#new</h1>
-<p>Find me in app/views/resumes/new.html.erb</p>
+<h1>Importar currículo</h1>
 
+<%= form_with model: @resume do |f| %>
 
+  <div>
+    <%= f.label :file, "Arquivo PDF" %><br>
+    <%= f.file_field :file %>
+  </div>
 
+  <br>
+
+  <%= f.submit "Enviar currículo" %>
+
+<% end %>

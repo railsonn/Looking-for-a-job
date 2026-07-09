@@ -1,0 +1,30 @@
+<h1>Pré-visualização</h1>
+
+<p>
+<strong>Nome:</strong>
+<%= @resume.status %>
+</p>
+
+<p>
+<strong>Email:</strong>
+<%= @resume.raw_text %>
+</p>
+
+<p>
+<strong>Telefone:</strong>
+<%= @resume.parsed_data %>
+</p>
+
+<h3>Habilidades</h3>
+
+<ul>
+  <% @resume.skills.each do |skill| %>
+    <li><%= skill %></li>
+  <% end %>
+</ul>
+
+<%= button_to "Confirmar Importação",
+      resume_path(@resume),
+      method: :patch %>
+
+<%= link_to "Cancelar", resumes_path %>
