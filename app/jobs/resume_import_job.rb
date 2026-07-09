@@ -12,7 +12,7 @@ class ResumeImportJob < ApplicationJob
     # Chamar IA
     data = ResumeParser.call(text)
     
-    user = User.first 
+    user = Candidate.first 
 
     resume = user.resumes.create!(status: "pending")
 
@@ -21,6 +21,8 @@ class ResumeImportJob < ApplicationJob
       filename: "teste.pdf",
       content_type: "application/pdf"
     )
+
+    print(resume)
   rescue
     resume.failed!
   end
