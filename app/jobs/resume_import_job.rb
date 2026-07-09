@@ -1,6 +1,5 @@
 class ResumeImportJob < ApplicationJob
   queue_as :default
-
   require "pdf-reader"
   require "stringio"
 
@@ -8,21 +7,27 @@ class ResumeImportJob < ApplicationJob
     resume = Resume.find(resume_id)
 
     # Extrair texto do PDF
-    text = PDF::Reader.new(resume.file.download).pages.map(&:text).join("\n")
+    pdf = PDF::Reader.new(
+      StringIO.new(resume.file.download)
+    )
+
+    text = pdf.pages.map(&:text).join("\n")
 
     # Chamar IA
     data = ResumeParser.call(text)
     
     user = Candidate.first 
 
-    resume = user.resumes.create!(status: "pending")
-
-    resume.file.attach(
-      io: File.open("/home/seu_usuario/Downloads/clientes_teste"),
-      filename: "teste.pdf",
-      content_type: "application/pdf"
+    resume.update!(
+      raw_text: text,
+      parsed_data: data,
+      status: "completed"
     )
 
-    print("#{resume} ---------------------------------------------------------------------------------")
+    rescue => e
+      resume.update(status: "failed") if resume.present?
+
+      Rails.logger.error e.full_message
+    end
   end
 end
