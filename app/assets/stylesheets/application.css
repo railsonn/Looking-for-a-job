@@ -8,3 +8,110 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+
+ .resume-preview{
+    max-width:1000px;
+    margin:40px auto;
+    padding:30px;
+    background:#f8fafc;
+}
+
+.preview-header{
+    margin-bottom:35px;
+}
+
+.preview-header h1{
+    font-size:2rem;
+    color:#1f2937;
+    margin-bottom:10px;
+}
+
+.preview-header p{
+    color:#6b7280;
+}
+
+.preview-card{
+    background:#fff;
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:24px;
+    border:1px solid #e5e7eb;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.preview-card h2{
+    margin-bottom:18px;
+    color:#2563eb;
+    border-bottom:2px solid #eff6ff;
+    padding-bottom:10px;
+}
+
+.preview-card p{
+    margin:10px 0;
+    line-height:1.7;
+}
+
+.preview-card ul{
+    margin-left:22px;
+}
+
+.preview-card li{
+    margin-bottom:8px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill-badge{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:.9rem;
+    font-weight:600;
+}
+
+.resume-text{
+    margin-top:15px;
+    background:#f3f4f6;
+    border-radius:8px;
+    padding:18px;
+    white-space:pre-wrap;
+    line-height:1.7;
+}
+
+.preview-description{
+    color:#6b7280;
+    margin-bottom:15px;
+}
+
+.resume-details{
+    margin-top:20px;
+}
+
+.show-text-button{
+    display:inline-block;
+    padding:12px 22px;
+    background:#2563eb;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+    user-select:none;
+}
+
+.show-text-button:hover{
+    background:#1d4ed8;
+}
+
+.full-text{
+    margin-top:18px;
+    max-height:400px;
+    overflow-y:auto;
+}
