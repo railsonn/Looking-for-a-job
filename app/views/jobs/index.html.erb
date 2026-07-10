@@ -1,45 +1,41 @@
 <h1>Vagas Disponíveis</h1>
 
-<div class="jobs-grid">
-  <% @jobs.each do |job| %>
-    <div class="job-card">
-      <div class="job-header">
+<% if @jobs.any? %>
+  <div class="jobs-list">
+    <% @jobs.each do |job| %>
+      <div class="job-card">
+
         <h2><%= job.title %></h2>
-        <span class="job-type">
-          <%= job.employment_type %>
-        </span>
-      </div>
 
-      <p class="company">
-        <strong>Empresa:</strong>
-        <%= job.company.name %>
-      </p>
+        <p>
+          <strong>Empresa:</strong>
+          <%= job.company.name %>
+        </p>
 
-      <p>
-        <strong>Local:</strong>
-        <%= job.location %>
-      </p>
+        <p>
+          <strong>Local:</strong>
+          <%= job.location %>
+        </p>
 
-      <% if job.salary.present? %>
+        <p>
+          <strong>Contrato:</strong>
+          <%= job.contract_type %>
+        </p>
+
         <p>
           <strong>Salário:</strong>
-          <%= job.salary %>
+          <%= number_to_currency(job.salary, unit: "R$ ", separator: ",", delimiter: ".") %>
         </p>
-      <% end %>
 
-      <p class="description">
-        <%= truncate(job.description, length: 180) %>
-      </p>
+        <p>
+          <%= truncate(job.description, length: 180) %>
+        </p>
 
-      <div class="job-actions">
         <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
-</div>
 
-<% if @jobs.empty? %>
-  <div class="empty-state">
-    <p>Nenhuma vaga disponível no momento.</p>
+      </div>
+    <% end %>
   </div>
+<% else %>
+  <p>Nenhuma vaga disponível no momento.</p>
 <% end %>
