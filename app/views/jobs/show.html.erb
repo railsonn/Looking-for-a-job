@@ -1,0 +1,42 @@
+<div class="job-details">
+
+  <h1><%= @job.title %></h1>
+
+  <div class="job-info">
+    <p>
+      <strong>Empresa:</strong>
+      <%= @job.company.name %>
+    </p>
+
+    <p>
+      <strong>Local:</strong>
+      <%= @job.location %>
+    </p>
+
+    <p>
+      <strong>Tipo de contrato:</strong>
+      <%= @job.contract_type %>
+    </p>
+
+    <p>
+      <strong>Salário:</strong>
+      <%= number_to_currency(@job.salary,
+            unit: "R$ ",
+            separator: ",",
+            delimiter: ".") %>
+    </p>
+  </div>
+
+  <hr>
+
+  <h2>Descrição da vaga</h2>
+
+  <p class="job-description">
+    <%= simple_format(@job.description) %>
+  </p>
+
+  <div class="actions">
+    <%= link_to "Voltar para vagas", jobs_path, class: "btn btn-secondary" %>
+  </div>
+
+</div>
