@@ -246,3 +246,81 @@
 .empty-state p{
     color:#6b7280;
 }
+
+
+
+
+/**
+ * Styles for the job form (new and edit pages)
+ */
+
+ .page-title {
+  margin-bottom: 25px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.job-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.job-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.job-type {
+  background: #2563eb;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.company {
+  margin-bottom: 10px;
+}
+
+.description {
+  margin: 20px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.job-actions {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 60px;
+  color: #666;
+}
