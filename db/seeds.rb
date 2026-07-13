@@ -113,6 +113,8 @@ descricoes = [
   "Procuramos profissionais comprometidos com qualidade, inovação e entrega de soluções tecnológicas que agreguem valor ao negócio."
 ]
 
+## criando valores para a tabela companies
+
 20.times do
   Company.find_or_create_by!(name: Faker::Company.name) do |company|
     company.cnpj = Faker::Number.number(digits: 14)
@@ -121,5 +123,19 @@ descricoes = [
     company.location = Faker::Address.full_address
     company.website = Faker::Internet.url
     company.active = Faker::Boolean.boolean
+  end
+end
+
+
+
+## criando valores para a tabela jobs
+
+20.times do
+  Job.find_or_create_by!(title: Faker::Job.title) do |job|
+    job.description = descricoes.sample
+    job.salary = Faker::Number.decimal(l_digits: 5, r_digits: 2)
+    job.location = Faker::Address.full_address
+    job.contract_type = ["CLT", "PJ", "Freelancer"].sample
+    job.company_id = Company.pluck(:id).sample
   end
 end

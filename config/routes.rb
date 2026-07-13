@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   require "sidekiq/web"
 
   Rails.application.routes.draw do
-    resources :resumes, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :resumes, only: [ :index, :new, :create, :show, :edit, :update ] do
       member do
         get :preview
       end
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   
-  resources :jobs
+  resources :jobs, only: [ :index, :new, :create, :edit, :show, :update, :destroy ]
   resources :companies
   resources :candidates
 
