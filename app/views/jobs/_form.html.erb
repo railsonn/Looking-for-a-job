@@ -1,0 +1,86 @@
+<%= form_with(model: job, class: "job-form") do |form| %>
+
+  <% if job.errors.any? %>
+    <div class="alert alert-danger">
+      <h3>
+        Não foi possível salvar a vaga:
+      </h3>
+
+      <ul>
+        <% job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+      <%= form.label :title, "Título da vaga" %>
+      <%= form.text_field :title,
+          class: "form-control",
+          placeholder: "Ex: Desenvolvedor Ruby on Rails Júnior" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :company_id, "Empresa" %>
+      <%= form.collection_select :company_id,
+          Company.order(:name),
+          :id,
+          :name,
+          { prompt: "Selecione uma empresa" },
+          { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :location, "Localização" %>
+      <%= form.text_field :location,
+          class: "form-control",
+          placeholder: "Ex: São Paulo - SP" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :salary, "Salário" %>
+      <%= form.number_field :salary,
+          step: 0.01,
+          class: "form-control",
+          placeholder: "3500.00" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :status, "Status" %>
+      <%= form.select :status,
+          Job.status.keys.map { |status| [status.humanize, status] },
+          {},
+          class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "Descrição da vaga" %>
+    <%= form.text_area :description,
+        rows: 8,
+        class: "form-control",
+        placeholder: "Descreva as atividades da vaga..." %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :requirements, "Requisitos" %>
+    <%= form.text_area :requirements,
+        rows: 6,
+        class: "form-control",
+        placeholder: "Liste os requisitos para a vaga..." %>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to "Cancelar", jobs_path, class: "btn btn-secondary" %>
+
+    <%= form.submit(
+          job.persisted? ? "Atualizar vaga" : "Cadastrar vaga",
+          class: "btn btn-primary"
+        ) %>
+  </div>
+
+<% end %>
