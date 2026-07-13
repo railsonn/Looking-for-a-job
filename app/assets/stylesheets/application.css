@@ -352,3 +352,133 @@
 .btn-secondary:hover {
   background: #4b5563;
 }
+
+
+
+
+/*
+ * ===========================================
+ * Job Form (New/Edit)
+ * ===========================================
+ */
+
+.job-form-container{
+    max-width:900px;
+    margin:40px auto;
+    padding:30px;
+    background:#f8fafc;
+}
+
+.job-form-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.job-form{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#374151;
+}
+
+.form-control{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:1rem;
+    transition:.25s;
+    box-sizing:border-box;
+    background:#fff;
+}
+
+.form-control:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+textarea.form-control{
+    resize:vertical;
+    min-height:140px;
+}
+
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:10px;
+}
+
+.alert{
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.alert-danger{
+    background:#fee2e2;
+    color:#991b1b;
+    border:1px solid #fecaca;
+}
+
+.alert-danger h3{
+    margin-top:0;
+    margin-bottom:12px;
+}
+
+.alert-danger ul{
+    margin:0;
+    padding-left:20px;
+}
+
+/*
+ * ===========================================
+ * Responsive
+ * ===========================================
+ */
+
+@media (max-width:768px){
+
+    .job-form-container{
+        padding:20px;
+    }
+
+    .job-form-card{
+        padding:20px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-actions{
+        flex-direction:column;
+    }
+
+    .form-actions .btn-primary,
+    .form-actions .btn-secondary{
+        width:100%;
+        text-align:center;
+    }
+
+}

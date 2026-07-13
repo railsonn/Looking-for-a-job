@@ -1,43 +1,16 @@
-<h1>Nova Vaga</h1>
+<div class="job-form-container">
 
-<%= form_with model: @job do |form| %>
+  <div class="page-header">
+    <div>
+      <h1>Nova Vaga</h1>
+      <p>Cadastre uma nova oportunidade.</p>
+    </div>
 
-  <div>
-    <%= form.label :title, "Título" %><br>
-    <%= form.text_field :title %>
+    <%= link_to "Voltar", jobs_path, class: "btn-secondary" %>
   </div>
 
-  <div>
-    <%= form.label :company_id, "Empresa" %><br>
-    <%= form.collection_select :company_id, Company.all, :id, :name %>
+  <div class="job-form-card">
+    <%= render "form", job: @job %>
   </div>
 
-  <div>
-    <%= form.label :location, "Local" %><br>
-    <%= form.text_field :location %>
-  </div>
-
-  <div>
-    <%= form.label :salary, "Salário" %><br>
-    <%= form.text_field :salary %>
-  </div>
-
-  <div>
-    <%= form.label :employment_type, "Tipo de contratação" %><br>
-    <%= form.select :employment_type,
-      ["CLT", "PJ", "Estágio", "Freelancer", "Temporário"] %>
-  </div>
-
-  <div>
-    <%= form.label :requirements, "Requisitos" %><br>
-    <%= form.text_area :requirements %>
-  </div>
-
-  <div>
-    <%= form.label :description, "Descrição" %><br>
-    <%= form.text_area :description %>
-  </div>
-
-  <%= form.submit "Criar vaga" %>
-
-<% end %>
+</div>

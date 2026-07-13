@@ -1,14 +1,16 @@
-<div class="container">
+<div class="job-form-container">
+
   <div class="page-header">
     <div>
       <h1>Editar Vaga</h1>
       <p>Atualize as informações da vaga.</p>
     </div>
 
-    <%= link_to "Voltar", job_path(@job), class: "btn btn-secondary" %>
+    <%= link_to "Voltar", job_path(@job), class: "btn-secondary" %>
   </div>
 
-  <div class="card">
+  <div class="job-form-card">
     <%= render "form", job: @job %>
   </div>
+
 </div>
