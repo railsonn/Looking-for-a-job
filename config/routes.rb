@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => "/sidekiq"
 
-  devise_for :candidates
-
   resources :jobs, only: [:index, :new, :create, :edit, :show, :update, :destroy]
 
   resources :companies
