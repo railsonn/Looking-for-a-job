@@ -19,6 +19,12 @@ class JobsController < ApplicationController
 
   def destroy
     @job = Job.find(params[:id])
+
+    unless current_user&.company == @job.company
+      redirect_to jobs_path, alert: "Você não tem permissão para excluir esta vaga."
+      return
+    end
+    
     @job.destroy
     redirect_to jobs_path, notice: 'Job was successfully deleted.'
   end
