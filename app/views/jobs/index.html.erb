@@ -40,7 +40,7 @@
         <div class="job-actions">
           <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
           
-          <% binding.irb %>
+
           <% if current_user && job.company.user == current_user %>
             <%= link_to "Excluir",
                 job_path(job),

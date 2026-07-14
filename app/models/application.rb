@@ -1,6 +1,4 @@
-class Application < ApplicationRecord
-  before_action :authenticate_user!
-  
+class Application < ApplicationRecord  
   belongs_to :company
   belongs_to :candidate
 end
