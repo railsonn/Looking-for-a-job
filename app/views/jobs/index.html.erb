@@ -41,7 +41,7 @@
           <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
           
 
-          <% if current_user && job.company.user == current_user %>
+          <% if current_candidate && job.company.user == current_candidate %>
             <%= link_to "Excluir",
                 job_path(job),
                 data: {

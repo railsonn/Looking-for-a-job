@@ -5,4 +5,6 @@ class Candidate < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :resumes, dependent: :destroy
+  has_many :applications, dependent: :destroy
+  has_many :jobs, through: :applications
 end
