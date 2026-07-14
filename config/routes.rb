@@ -1,34 +1,23 @@
 Rails.application.routes.draw do
   require "sidekiq/web"
 
-  Rails.application.routes.draw do
-    resources :resumes, only: [ :index, :new, :create, :show, :edit, :update ] do
-      member do
-        get :preview
-      end
-    end
-    
-    mount Sidekiq::Web => "/sidekiq"
-  end
-
-  
-  resources :jobs, only: [ :index, :new, :create, :edit, :show, :update, :destroy ]
-  resources :companies
-  resources :candidates
+  mount Sidekiq::Web => "/sidekiq"
 
   devise_for :candidates
 
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :jobs, only: [:index, :new, :create, :edit, :show, :update, :destroy]
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  resources :companies
+
+  resources :candidates, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
+  resources :resumes, only: [:index, :new, :create, :show, :edit, :update] do
+    member do
+      get :preview
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  root "jobs#index" # ou outra página inicial
 end
