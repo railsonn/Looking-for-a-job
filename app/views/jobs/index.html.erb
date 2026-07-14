@@ -1,5 +1,11 @@
 <h1>Vagas Disponíveis</h1>
 
+<% if notice.present? %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
 <% if @jobs.any? %>
   <div class="jobs-list">
     <% @jobs.each do |job| %>
@@ -42,7 +48,7 @@
               },
               class: "btn btn-danger" %>
         </div>
-        
+
       </div>
     <% end %>
   </div>
