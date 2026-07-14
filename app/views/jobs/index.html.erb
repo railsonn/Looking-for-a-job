@@ -31,16 +31,18 @@
           <%= truncate(job.description, length: 180) %>
         </p>
 
-        <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
+        <div class="job-actions">
+          <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
 
-        <%= link_to "Excluir",
-            job_path(job),
-            data: {
-              turbo_method: :delete,
-              turbo_confirm: "Tem certeza que deseja excluir esta vaga?"
-            },
-            class: "btn btn-danger" %>
-
+          <%= link_to "Excluir",
+              job_path(job),
+              data: {
+                turbo_method: :delete,
+                turbo_confirm: "Tem certeza que deseja excluir esta vaga?"
+              },
+              class: "btn btn-danger" %>
+        </div>
+        
       </div>
     <% end %>
   </div>
