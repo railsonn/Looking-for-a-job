@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_15_181654) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_15_183023) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -84,8 +84,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_181654) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "resume_id", null: false
     t.index ["candidate_id"], name: "index_jobs_applications_on_candidate_id"
     t.index ["company_id"], name: "index_jobs_applications_on_company_id"
+    t.index ["resume_id"], name: "index_jobs_applications_on_resume_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -115,5 +117,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_181654) do
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs_applications", "candidates"
   add_foreign_key "jobs_applications", "companies"
+  add_foreign_key "jobs_applications", "resumes"
   add_foreign_key "resumes", "candidates"
 end
