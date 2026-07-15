@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get "job_aplication/index"
-  get "job_aplication/edit"
-  get "job_aplication/show"
-  get "job_aplication/new"
   require "sidekiq/web"
 
   mount Sidekiq::Web => "/sidekiq"

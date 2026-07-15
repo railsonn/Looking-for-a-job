@@ -1,0 +1,16 @@
+<h1>Candidatar-se à vaga</h1>
+
+<%= form_with(model: job_application, local: true) do |f| %>
+
+  <%= f.hidden_field :job_id %>
+
+  <div>
+    <%= f.label :status %><br>
+    <%= f.select :status, ["Pendente", "Em análise", "Aprovado", "Rejeitado"] %>
+  </div>
+
+  <br>
+
+  <%= f.submit "Enviar candidatura" %>
+
+<% end %>

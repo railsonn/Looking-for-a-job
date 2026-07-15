@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_15_223724) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_15_232550) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,8 +75,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_223724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "resume_id", null: false
+    t.integer "job_id"
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
     t.index ["company_id"], name: "index_job_applications_on_company_id"
+    t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["resume_id"], name: "index_job_applications_on_resume_id"
   end
 
@@ -89,9 +91,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_223724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id", null: false
-    t.integer "jobs_applications_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
-    t.index ["jobs_applications_id"], name: "index_jobs_on_jobs_applications_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -121,8 +121,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_223724) do
   add_foreign_key "companies", "job_applications", column: "jobs_application_id"
   add_foreign_key "job_applications", "candidates"
   add_foreign_key "job_applications", "companies"
+  add_foreign_key "job_applications", "jobs"
   add_foreign_key "job_applications", "resumes"
   add_foreign_key "jobs", "companies"
-  add_foreign_key "jobs", "job_applications", column: "jobs_applications_id"
   add_foreign_key "resumes", "candidates"
 end
