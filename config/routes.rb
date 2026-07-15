@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :jobs do
-    resources :job_applications, only: [:new, :create]
+    resources :job_aplications, only: [:new, :index, :show, :edit]
   end
 
   resources :companies

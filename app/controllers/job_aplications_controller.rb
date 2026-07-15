@@ -1,6 +1,6 @@
-class JobsAplicationsController < ApplicationController
+class JobAplicationsController < ApplicationController
   def index
-    @jobs_apllications = JobsAplication.all
+    @jobs_apllications = JobAplication.all
   end
 
   def edit
@@ -12,7 +12,7 @@ class JobsAplicationsController < ApplicationController
   end
 
   def new
-    @job_application = JobsAplication.new
+    @job_application = JobAplication.new
   end
 
   def create 
@@ -27,7 +27,7 @@ class JobsAplicationsController < ApplicationController
 
   def update 
     @job_application = JobsAplication.find(params[:id])
-    
+
     if @job_application.update(job_application_params)
       redirect_to jobs_aplications_path, notice: 'Job application was successfully updated.'
     else
