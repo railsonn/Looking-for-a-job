@@ -44,9 +44,21 @@ class ResumesController < ApplicationController
   end
 
   def update
+    @resume = Resume.find(params[:id])
+    if @resume.update(resume_params)
+      redirect_to resumes_path, notice: 'Resume was successfully updated.'
+    else
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    @resume = Resume.find(params[:id])
+    if @resume.destroy
+      redirect_to resumes_path, notice: 'Resume was successfully deleted.'
+    else
+      redirect_to resumes_path, alert: 'Failed to delete resume.'
+    end
   end
 
   private

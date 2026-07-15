@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :company
+  belongs_to :candidate, optional: true
   
 
   validates :title, presence: true

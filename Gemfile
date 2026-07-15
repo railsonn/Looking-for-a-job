@@ -18,10 +18,9 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # autenticacao de usuario
-gem "devise"
 gem "pdf-reader"
 
-
+gem "devise", "~> 4.9.4"
 gem "sidekiq"
 gem "redis", "~> 5.0"
 

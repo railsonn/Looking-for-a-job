@@ -41,7 +41,7 @@
           <%= link_to "Ver detalhes", job_path(job), class: "btn btn-primary" %>
           
 
-          <% if current_candidate && job.company.user == current_candidate %>
+
             <%= link_to "Excluir",
                 job_path(job),
                 data: {
@@ -49,7 +49,6 @@
                   turbo_confirm: "Tem certeza que deseja excluir esta vaga?"
                 },
                 class: "btn btn-danger" %>
-          <% end %>
         </div>
 
       </div>
