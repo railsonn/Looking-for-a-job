@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_15_183023) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_15_183310) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,7 +75,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_183023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id", null: false
+    t.integer "jobs_applications_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["jobs_applications_id"], name: "index_jobs_on_jobs_applications_id"
   end
 
   create_table "jobs_applications", force: :cascade do |t|
@@ -115,6 +117,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_15_183023) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "jobs_applications", column: "jobs_applications_id"
   add_foreign_key "jobs_applications", "candidates"
   add_foreign_key "jobs_applications", "companies"
   add_foreign_key "jobs_applications", "resumes"
