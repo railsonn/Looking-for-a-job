@@ -2,4 +2,11 @@
 
 <h3><%= @job.title %></h3>
 
+  <p><strong>Empresa:</strong> <%= @job.company.name %></p>
+  <p><strong>Local:</strong> <%= @job.location %></p>
+  <p><strong>Tipo de contrato:</strong> <%= @job.contract_type %></p>
+  <p><strong>Salário:</strong> <%= number_to_currency(@job.salary, unit: "R$ ", separator: ",", delimiter: ".") %></p>
+  <p><strong>Descrição:</strong> <%= simple_format(@job.description) %></p>
+  <p><strong>Data de publicação:</strong> <%= @job.created_at.strftime("%d/%m/%Y") %></p>
+    
 <%= render "form" %>
