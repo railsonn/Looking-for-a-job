@@ -18,11 +18,4 @@
     <%= f.text_area :cover_letter, rows: 8, placeholder: "Conte um pouco sobre você e por que deseja esta vaga." %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Enviar candidatura", class: "btn btn-primary" %>
-
-    <%= link_to "Cancelar",
-                job_path(@job),
-                class: "btn btn-secondary" %>
-  </div>
 <% end %>

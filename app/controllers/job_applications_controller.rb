@@ -10,10 +10,11 @@ class JobApplicationsController < ApplicationController
   def show
     @job_application = JobApplication.find(params[:id])
   end
-  
+
   def new
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.new
+    @resumes = Resume.new
   end
 
   def create 

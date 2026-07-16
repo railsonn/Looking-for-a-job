@@ -52,9 +52,28 @@
   </div>
 
   <div class="application-card">
-    <h3>Envie sua candidatura</h3>
 
     <%= render "form" %>
+
+    <h1>Importar currículo</h1>
+
+    <%= form_with model: [@job, @job_application] do |f| %>
+
+      <div>
+        <%= f.label :file, "Arquivo PDF" %><br>
+        <%= f.file_field :file %>
+      </div>
+
+      <br>
+
+      <div class="actions">
+        <%= link_to "Enviar candidatura", "", class: "btn btn-primary" %>
+
+        <%= link_to "Cancelar",
+                    job_path(@job),
+                    class: "btn btn-secondary" %>
+      </div>
+    <% end %>
   </div>
 
 </div>
