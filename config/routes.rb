@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :jobs do
-    resources :job_applications, only: [:new, :index, :show, :edit]
+    resources :job_applications, only: [:new, :index, :show, :edit, :create]
   end
 
   resources :companies
