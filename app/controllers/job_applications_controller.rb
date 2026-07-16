@@ -20,8 +20,10 @@ class JobApplicationsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
-    @job_application.candidate = current_user.candidate
     
+    set_associations
+
+    binding.irb
     if @job_application.save
       redirect_to @job, notice: "Candidatura enviada!"
     else
@@ -40,6 +42,14 @@ class JobApplicationsController < ApplicationController
   end
 
   private
+
+  def set_associations
+    candidate = Candidate.first
+
+    @job_application.candidate_id = candidate.id
+    @job_application.resume.candidate_id = candidate.id 
+    @job_application.company_id = @job.company.id
+  end
 
   def job_application_params
     params.require(:job_application).permit(:job_id, :candidate_id, resume_attributes: [:file])
