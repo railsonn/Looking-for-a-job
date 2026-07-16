@@ -13,8 +13,6 @@ class ResumesController < ApplicationController
     @resume = Resume.new(resume_params)
     @resume.candidate = Candidate.first
 
-    binding.irb
-
     unless @resume.save
       puts @resume.errors.full_messages
       render :new, status: :unprocessable_entity

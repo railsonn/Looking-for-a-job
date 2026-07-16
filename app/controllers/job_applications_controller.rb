@@ -14,16 +14,15 @@ class JobApplicationsController < ApplicationController
   def new
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build
-    @job_application.build_resume
+    @resume = Resume.new
   end
 
   def create
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
-    
+
     set_associations
 
-    binding.irb
     if @job_application.save
       redirect_to @job, notice: "Candidatura enviada!"
     else
