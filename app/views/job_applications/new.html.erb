@@ -1,12 +1,60 @@
-<h1>Candidatar-se à vaga</h1>
+<div class="job-application-container">
 
-<h3><%= @job.title %></h3>
+  <div class="page-header">
+    <h1>Candidatar-se à vaga</h1>
+    <p>Revise as informações da vaga antes de enviar sua candidatura.</p>
+  </div>
 
-  <p><strong>Empresa:</strong> <%= @job.company.name %></p>
-  <p><strong>Local:</strong> <%= @job.location %></p>
-  <p><strong>Tipo de contrato:</strong> <%= @job.contract_type %></p>
-  <p><strong>Salário:</strong> <%= number_to_currency(@job.salary, unit: "R$ ", separator: ",", delimiter: ".") %></p>
-  <p><strong>Descrição:</strong> <%= simple_format(@job.description) %></p>
-  <p><strong>Data de publicação:</strong> <%= @job.created_at.strftime("%d/%m/%Y") %></p>
-    
-<%= render "form" %>
+  <div class="job-card">
+
+    <div class="job-header">
+      <h2><%= @job.title %></h2>
+      <span class="badge"><%= @job.contract_type %></span>
+    </div>
+
+    <div class="job-info-grid">
+
+      <div class="info-item">
+        <span class="label">🏢 Empresa</span>
+        <span class="value"><%= @job.company.name %></span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">📍 Local</span>
+        <span class="value"><%= @job.location %></span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">💰 Salário</span>
+        <span class="value">
+          <%= number_to_currency(@job.salary,
+                unit: "R$ ",
+                separator: ",",
+                delimiter: ".") %>
+        </span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">📅 Publicada em</span>
+        <span class="value">
+          <%= @job.created_at.strftime("%d/%m/%Y") %>
+        </span>
+      </div>
+
+    </div>
+
+    <div class="job-description">
+      <h3>Descrição da vaga</h3>
+
+      <%= simple_format(@job.description) %>
+    </div>
+
+  </div>
+
+  <div class="application-card">
+    <h3>Envie sua candidatura</h3>
+
+    <%= render "form" %>
+  </div>
+
+</div>
