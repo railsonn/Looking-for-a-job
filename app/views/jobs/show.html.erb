@@ -35,11 +35,8 @@
     <%= simple_format(@job.description) %>
   </p>
 
-  <%= form_with(model: [@job, @job_application]) do |f| %>
-    <%= f.hidden_field :job_id, value: @job.id %>
-
-    <%= f.submit "Candidatar-se" %>
-  <% end %>
+  <%= link_to "Candidatar-se", new_job_job_application_path(@job), 
+  class: "btn btn-primary" %>
 
   <div class="actions">
     <%= link_to "Voltar para vagas", jobs_path, class: "btn btn-secondary" %>

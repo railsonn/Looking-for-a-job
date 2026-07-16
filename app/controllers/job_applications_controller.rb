@@ -16,6 +16,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def create 
+    binding.irb
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.save

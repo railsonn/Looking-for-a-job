@@ -1,0 +1,28 @@
+<%= form_with(model: [@job, @job_application], local: true) do |f| %>
+  <% if @job_application.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>
+        <%= pluralize(@job_application.errors.count, "erro") %> impediram o envio da candidatura:
+      </h4>
+
+      <ul>
+        <% @job_application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cover_letter, "Carta de apresentação" %><br>
+    <%= f.text_area :cover_letter, rows: 8, placeholder: "Conte um pouco sobre você e por que deseja esta vaga." %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enviar candidatura", class: "btn btn-primary" %>
+
+    <%= link_to "Cancelar",
+                job_path(@job),
+                class: "btn btn-secondary" %>
+  </div>
+<% end %>
