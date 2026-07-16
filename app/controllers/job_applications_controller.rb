@@ -10,13 +10,13 @@ class JobApplicationsController < ApplicationController
   def show
     @job_application = JobApplication.find(params[:id])
   end
-
+  
   def new
-    @job_application = JobApplication.new
+    @job = Job.find(params[:job_id])
+    @job_application = @job.job_applications.new
   end
 
   def create 
-    binding.irb
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.save
