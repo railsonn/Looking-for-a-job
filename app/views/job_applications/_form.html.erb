@@ -1,4 +1,4 @@
-<%= form_with(model: [@job, @job_application], local: true) do |f| %>
+<%= form_with(model: @job_application, url: job_job_applications_path, local: true) do |f| %>
   <% if @job_application.errors.any? %>
     <div class="alert alert-danger">
       <h4>

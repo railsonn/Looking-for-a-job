@@ -1,54 +1,5 @@
 <div class="job-application-container">
 
-  <div class="page-header">
-    <h1>Candidatar-se à vaga</h1>
-    <p>Revise as informações da vaga antes de enviar sua candidatura.</p>
-  </div>
-
-  <div class="job-card">
-
-    <div class="job-header">
-      <h2><%= @job.title %></h2>
-      <span class="badge"><%= @job.contract_type %></span>
-    </div>
-
-    <div class="job-info-grid">
-
-      <div class="info-item">
-        <span class="label">🏢 Empresa</span>
-        <span class="value"><%= @job.company.name %></span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">📍 Local</span>
-        <span class="value"><%= @job.location %></span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">💰 Salário</span>
-        <span class="value">
-          <%= number_to_currency(@job.salary,
-                unit: "R$ ",
-                separator: ",",
-                delimiter: ".") %>
-        </span>
-      </div>
-
-      <div class="info-item">
-        <span class="label">📅 Publicada em</span>
-        <span class="value">
-          <%= @job.created_at.strftime("%d/%m/%Y") %>
-        </span>
-      </div>
-
-    </div>
-
-    <div class="job-description">
-      <h3>Descrição da vaga</h3>
-
-      <%= simple_format(@job.description) %>
-    </div>
-
   </div>
 
   <div class="application-card">
@@ -59,17 +10,17 @@
 
     <%= form_with model: [@job, @job_application] do |f| %>
 
-      <div>
-        <%= f.label :file, "Arquivo PDF" %><br>
-        <%= f.file_field :file %>
-      </div>
-
-      <br>
+      <h3>Currículo</h3>
 
       <div class="actions">
-        <%= link_to "Enviar candidatura", "", class: "btn btn-primary" %>
+        <%= f.fields_for :resume do |resume| %>
+          <%= resume.label :file %>
+          <%= resume.file_field :file %>
+        <% end %>
 
-        <%= link_to "Cancelar",
+        <%= f.submit "Enviar candidatura", class: "btn btn-primary" %>
+      
+        <%= link_to "← Voltar para a vaga",
                     job_path(@job),
                     class: "btn btn-secondary" %>
       </div>
