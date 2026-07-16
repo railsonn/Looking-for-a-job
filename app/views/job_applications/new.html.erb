@@ -5,6 +5,7 @@
 
   <div class="application-card">
     <%= form_with model: @resume, url: resumes_path do |f| %>
+        <%= f.label :file, "Arquivo PDF" %><br>
         <%= f.file_field :file,
         onchange: "this.form.requestSubmit();" %>
     <% end %>
