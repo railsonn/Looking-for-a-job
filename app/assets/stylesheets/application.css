@@ -585,3 +585,36 @@ textarea.form-control{
     margin-bottom:20px;
     color:#222;
 }
+
+.application-form-card {
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+  border: 1px solid #e5e7eb;
+}
+
+.form-header {
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.form-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+}
+
+.form-header p {
+  margin-top: .5rem;
+  color: #6b7280;
+  font-size: .95rem;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

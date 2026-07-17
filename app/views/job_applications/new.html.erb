@@ -45,12 +45,20 @@
 
     <div class="job-description">
       <h3>Descrição da vaga</h3>
-
       <%= simple_format(@job.description) %>
+    </div>
+
+  </div>
+
+  <div class="application-form-card">
+    <div class="form-header">
+      <h2>Enviar candidatura</h2>
+      <p>Complete as informações abaixo para concluir sua candidatura.</p>
+    </div>
+
+    <div class="form-body">
+      <%= render "form" %>
     </div>
   </div>
 
-  <%= render "form" %>
-
-  </div>
 </div>
