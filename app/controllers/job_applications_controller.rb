@@ -19,6 +19,11 @@ class JobApplicationsController < ApplicationController
 
   def create
     @job = Job.find(params[:job_id])
+    unless job_application_params[:resume_attributes][:file].present? || job_application_params[:resume_attributes][:file].content_type == "application/pdf"
+      redirect_to new_job_job_application_path(@job), alert: "Por favor, envie um arquivo PDF."
+      return
+    end
+
     @job_application = @job.job_applications.build(job_application_params)
 
     set_associations
