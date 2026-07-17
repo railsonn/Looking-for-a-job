@@ -46,6 +46,7 @@ class JobApplicationsController < ApplicationController
     candidate = Candidate.first
 
     @job_application.candidate_id = candidate.id
+    binding.irb
     @job_application.resume.candidate_id = candidate.id 
     @job_application.company_id = @job.company.id
   end
