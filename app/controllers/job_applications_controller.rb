@@ -43,12 +43,12 @@ class JobApplicationsController < ApplicationController
   private
 
   def set_associations
-    candidate = Candidate.first
+    candidate = current_user.candidate || Candidate.create(user: current_user)
 
     @job_application.candidate_id = candidate.id
   end
 
   def job_application_params
-    params.require(:job_application).permit(:job_id, :candidate_id, resume_attributes: [:file])
+    params.require(:job_application).permit(:job_id, :candidate_id)
   end
 end
