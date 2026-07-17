@@ -20,7 +20,7 @@ gem "jbuilder"
 # autenticacao de usuario
 gem "pdf-reader"
 
-gem "devise", "~> 4.9.4"
+gem "devise", "~> 5.0.4"
 gem "sidekiq"
 gem "redis", "~> 5.0"
 
