@@ -12,7 +12,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-
+    @candidate = Candidate.find(params[:id])
   end
 
   def update

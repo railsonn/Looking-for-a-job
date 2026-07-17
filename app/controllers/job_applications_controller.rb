@@ -15,9 +15,12 @@ class JobApplicationsController < ApplicationController
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build
     @resume = Resume.new
+    @resume = Resume.find(params[:resume_id]) if params[:resume_id].present?
   end
 
   def create
+
+    binding.irb
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
 
@@ -26,6 +29,7 @@ class JobApplicationsController < ApplicationController
     if @job_application.save
       redirect_to @job, notice: "Candidatura enviada!"
     else
+      @resume = Resume.new
       render :new, status: :unprocessable_entity
     end
   end
@@ -45,7 +49,7 @@ class JobApplicationsController < ApplicationController
   def set_associations
     candidate = current_user.candidate || Candidate.create(user: current_user)
 
-    @job_application.candidate_id = candidate.id
+    @job_application.candidate_id = candidate.id;
   end
 
   def job_application_params

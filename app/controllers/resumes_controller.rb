@@ -11,6 +11,7 @@ class ResumesController < ApplicationController
 
   def create
     @resume = Resume.new(resume_params)
+    binding.irb
     @resume.candidate = Candidate.first
 
     unless @resume.save
@@ -29,6 +30,9 @@ class ResumesController < ApplicationController
     text = pdf.pages.map(&:text).join("\n")
 
     @resume.update(status: "completed", raw_text: text, parsed_data: ResumeParser.call(text))
+    redirect_to new_job_job_application_path(
+      job_id: params[:job_id],
+      resume_id: @resume.id)
   end
 
   def edit
