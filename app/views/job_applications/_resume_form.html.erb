@@ -1,0 +1,11 @@
+<%= form_with model: @resume, url: resumes_path, multipart: true do |f| %>
+
+  <div class="form-group">
+    <%= f.label :file, "Currículo (PDF)" %>
+
+    <%= f.file_field :file,
+          accept: "application/pdf",
+          onchange: "this.form.requestSubmit();" %>
+  </div>
+
+<% end %>

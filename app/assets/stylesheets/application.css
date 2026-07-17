@@ -587,34 +587,64 @@ textarea.form-control{
 }
 
 .application-form-card {
-  margin-top: 2rem;
-  background: #fff;
-  border-radius: 14px;
-  padding: 2rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-  border: 1px solid #e5e7eb;
+    margin-top: 2rem;
+    background: #fff;
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    border: 1px solid #e5e7eb;
 }
 
 .form-header {
-  border-bottom: 1px solid #ececec;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
 }
 
 .form-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #1f2937;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1f2937;
 }
 
 .form-header p {
-  margin-top: .5rem;
-  color: #6b7280;
-  font-size: .95rem;
+    margin-top: .5rem;
+    color: #6b7280;
+    font-size: .95rem;
 }
 
 .form-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+
+
+/** 
+ * Styles for the resume form (new and edit pages)
+ */
+
+ .resume-selector {
+  margin: 1.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.resume-selector summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.resume-selector summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-content {
+  border-top: 1px solid #eee;
+  padding: 1.5rem;
 }
