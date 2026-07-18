@@ -1,2 +1,76 @@
-<h1>JobAplication#index</h1>
-<p>Find me in app/views/job_aplication/index.html.erb</p>
+<div class="job-applications-container">
+
+  <div class="page-header">
+    <h1>Minhas Candidaturas</h1>
+    <p>Acompanhe o status das vagas para as quais você se candidatou.</p>
+  </div>
+
+  <% if @job_applications.any? %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Vaga</th>
+          <th>Empresa</th>
+          <th>Candidato</th>
+          <th>Status</th>
+          <th>Currículo</th>
+          <th>Data</th>
+          <th class="text-center">Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @job_applications.each do |application| %>
+          <tr>
+            <td>
+              <strong><%= application.job.title %></strong>
+            </td>
+
+            <td>
+              <%= application.company.name %>
+            </td>
+
+            <td>
+              <%= application.candidate.name %>
+            </td>
+
+            <td>
+              <span class="status-badge">
+                <%= application.status.present? ? application.status.humanize : "Em análise" %>
+              </span>
+            </td>
+
+            <td>
+              <% if application.resume.present? %>
+                <%= link_to "Visualizar", preview_resume_path(application.resume), class: "btn btn-sm btn-outline-primary" %>
+              <% else %>
+                -
+              <% end %>
+            </td>
+
+            <td>
+              <%= l(application.created_at, format: :short) %>
+            </td>
+
+            <td class="text-center">
+              <%= link_to "Ver", job_job_application_path(application.job, application), class: "btn btn-sm btn-primary" %>
+
+              <%= link_to "Editar", edit_job_job_application_path(application.job, application), class: "btn btn-sm btn-warning" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+
+    <div class="empty-state">
+      <h3>Nenhuma candidatura encontrada</h3>
+      <p>Você ainda não se candidatou a nenhuma vaga.</p>
+
+      <%= link_to "Ver vagas", jobs_path, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>

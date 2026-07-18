@@ -1,8 +1,11 @@
 class JobApplicationsController < ApplicationController
   def index
-    @job_applications = JobApplication.all
+    @job_applications = current_user.candidate
+                                    .job_applications
+                                    .includes(:job, :company, :resume)
+                                    .order(created_at: :desc)
   end
-
+  
   def edit
     @job_application = JobApplication.find(params[:id])
   end
