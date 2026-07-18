@@ -4,10 +4,6 @@ class JobApplicationsController < ApplicationController
                                     .job_applications
                                     .includes(:job, :company, :resume)
                                     .order(created_at: :desc)
-    @job_applications = current_user.company
-                                    .job_application
-                                    .includes(:job, :candidate, :resume)
-                                    .order(created_at: :desc)
   end
 
   def edit
@@ -61,6 +57,6 @@ class JobApplicationsController < ApplicationController
   end
 
   def job_application_params
-    params.require(:job_application).permit(:job_id, :candidate_id, :resume_id, :cover_letter)
+    params.require(:job_application).permit(:job_id, :candidate_id, :company_id, :resume_id, :cover_letter)
   end
 end

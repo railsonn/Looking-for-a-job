@@ -114,6 +114,8 @@ descricoes = [
 
 ## criando valores para a tabela companies
 
+
+
 20.times do
   Company.find_or_create_by!(name: Faker::Company.name) do |company|
     company.cnpj = Faker::Number.number(digits: 14)
@@ -121,7 +123,8 @@ descricoes = [
     company.description = descricoes.sample
     company.location = Faker::Address.full_address
     company.website = Faker::Internet.url
-    company.active = Faker::Boolean.boolean
+    company.active = Faker::Boolean.boolean,
+    company.user_id = 1
   end
 end
 
@@ -142,3 +145,11 @@ end
 
 
 
+10.times do
+  Candidate.find_or_create_by!(name: Faker::Name.first_name) do |candidate|
+    candidate.lastName = Faker::Name.last_name
+    candidate.cpf = Faker::Number.number(digits: 11)
+    candidate.email = Faker::Internet.email
+    candidate.user_id = 1
+  end
+end
