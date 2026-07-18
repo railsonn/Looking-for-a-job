@@ -4,8 +4,12 @@ class JobApplicationsController < ApplicationController
                                     .job_applications
                                     .includes(:job, :company, :resume)
                                     .order(created_at: :desc)
+    @job_applications = current_user.company
+                                    .job_application
+                                    .includes(:job, :candidate, :resume)
+                                    .order(created_at: :desc)
   end
-  
+
   def edit
     @job_application = JobApplication.find(params[:id])
   end
