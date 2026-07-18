@@ -1,8 +1,8 @@
-<%= form_with model: @resume, url: resumes_path, multipart: true do |f| %>
+<%= form_with model: resume, url: resumes_path, multipart: true do |f| %>
 
   <div class="form-group">
-    <%= hidden_field_tag :job_id, @job.id %>
-    
+    <%= hidden_field_tag :job_id, job.id %>
+
     <%= f.label :file, "Currículo (PDF)" %>
 
     <%= f.file_field :file,

@@ -15,7 +15,6 @@ class JobApplicationsController < ApplicationController
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build
     @resume = Resume.new
-    @resume = Resume.find(params[:resume_id]) if params[:resume_id].present?
   end
 
   def create

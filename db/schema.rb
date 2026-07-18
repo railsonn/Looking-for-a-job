@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_16_195028) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_17_235832) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_16_195028) do
     t.datetime "updated_at", null: false
     t.integer "resume_id", null: false
     t.integer "job_id"
+    t.text "cover_letter"
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
     t.index ["company_id"], name: "index_job_applications_on_company_id"
     t.index ["job_id"], name: "index_job_applications_on_job_id"
