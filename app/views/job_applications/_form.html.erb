@@ -14,6 +14,9 @@
   <% end %>
 
   <div class="field">
+
+    <%= f.hidden_field :resume_id, value: params[:resume_id] %>
+
     <%= f.label :cover_letter, "Carta de apresentação" %><br>
     <%= f.text_area :cover_letter, rows: 8, placeholder: "Conte um pouco sobre você e por que deseja esta vaga." %>
   </div>

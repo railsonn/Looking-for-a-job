@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :user
   has_many :jobs, dependent: :destroy
+  has_many :job_application, dependent: :destroy
 
   has_one_attached :logo
 end

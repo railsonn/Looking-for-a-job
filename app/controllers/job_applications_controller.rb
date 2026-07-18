@@ -18,10 +18,11 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
-
-    binding.irb
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
+    @resume = Resume.find(params[:job_application][:resume_id]) 
+
+
 
     set_associations
 
@@ -49,9 +50,10 @@ class JobApplicationsController < ApplicationController
     candidate = current_user.candidate || Candidate.create(user: current_user)
 
     @job_application.candidate_id = candidate.id;
+    @job_application.company = @job.company
   end
 
   def job_application_params
-    params.require(:job_application).permit(:job_id, :candidate_id)
+    params.require(:job_application).permit(:job_id, :candidate_id, :resume_id, :cover_letter)
   end
 end
