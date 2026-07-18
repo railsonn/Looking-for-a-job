@@ -56,7 +56,7 @@ class JobApplicationsController < ApplicationController
   def set_associations
     candidate = current_user.candidate || Candidate.create(user: current_user)
 
-    @job_application.candidate_id = candidate.id;
+    @job_application.candidate = candidate
     @job_application.company = @job.company
   end
 

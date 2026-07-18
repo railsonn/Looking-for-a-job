@@ -142,11 +142,3 @@ end
 
 
 
-10.times do
-  Candidate.find_or_create_by!(name: Faker::Name.first_name) do |candidate|
-    candidate.lastName = Faker::Name.last_name
-    candidate.cpf = Faker::Number.number(digits: 11)
-    candidate.email = Faker::Internet.email
-    candidate.user_id = 2
-  end
-end
