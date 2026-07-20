@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "profile/new"
+  get "profile/edit"
+  get "profile/destroy"
   require "sidekiq/web"
 
   mount Sidekiq::Web => "/sidekiq"

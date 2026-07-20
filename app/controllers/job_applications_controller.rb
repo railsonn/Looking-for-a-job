@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   def index
+    if current_user.candidate.job_applications.
     @job_applications = current_user.candidate
                                     .job_applications
                                     .includes(:job, :company, :resume)
