@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-  get "profile/new"
-  get "profile/edit"
-  get "profile/destroy"
   require "sidekiq/web"
 
   mount Sidekiq::Web => "/sidekiq"
 
   devise_for :users
 
+  resources :profiles, only: [ :index ]
+
   resources :job_applications, only: [:index]
 
   resources :jobs do
     resources :job_applications, only: [:new, :create, :show, :edit]
   end
+
 
   resources :companies
 
@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "jobs#index" # ou outra página inicial
+
+  get  "/choose_profile", to: "profiles#new"
+  post "/choose_profile", to: "profiles#create"
 end

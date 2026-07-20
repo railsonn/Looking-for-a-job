@@ -1,2 +1,43 @@
-<h1>Candidate#edit</h1>
-<p>Find me in app/views/candidate/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4">Complete o seu perfil</h2>
+
+      <%= form_with model: @candidate do |f| %>
+
+        <div class="mb-3">
+          <%= f.label :name, "Nome", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :last_name, "Sobrenome", class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :cpf, class: "form-label" %>
+          <%= f.text_field :cpf, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :phone, "Telefone", class: "form-label" %>
+          <%= f.telephone_field :phone, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :birth_date, "Data de nascimento", class: "form-label" %>
+          <%= f.date_field :birth_date, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :bio, "Sobre você", class: "form-label" %>
+          <%= f.text_area :bio, rows: 5, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

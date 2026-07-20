@@ -1,2 +1,43 @@
-<h1>Company#edit</h1>
-<p>Find me in app/views/company/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4">Complete o perfil da empresa</h2>
+
+      <%= form_with model: @company do |f| %>
+
+        <div class="mb-3">
+          <%= f.label :name, "Nome da empresa", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :cnpj, class: "form-label" %>
+          <%= f.text_field :cnpj, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :phone, "Telefone", class: "form-label" %>
+          <%= f.telephone_field :phone, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :website, "Site", class: "form-label" %>
+          <%= f.url_field :website, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :description, "Descrição", class: "form-label" %>
+          <%= f.text_area :description, rows: 5, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

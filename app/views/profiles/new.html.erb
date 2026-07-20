@@ -1,0 +1,13 @@
+<h1>Como você deseja usar a plataforma?</h1>
+
+<%= form_with url: choose_profile_path do %>
+  <%= button_tag "Sou Empresa",
+                 name: :profile_type,
+                 value: "company",
+                 class: "btn btn-primary" %>
+
+  <%= button_tag "Sou Candidato",
+                 name: :profile_type,
+                 value: "candidate",
+                 class: "btn btn-success" %>
+<% end %>
