@@ -6,6 +6,21 @@
   </div>
 <% end %>
 
+<details class="menu-options">
+  <summary>⋮</summary>
+
+  <div class="menu-dropdown">
+    <%= link_to "Ver", "#" %>
+    <%= link_to "Editar", "#" %>
+    <%= link_to "Excluir",
+        "#",
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Tem certeza?"
+        } %>
+  </div>
+</details>
+
 <% if @jobs.any? %>
   <div class="jobs-list">
     <% @jobs.each do |job| %>
