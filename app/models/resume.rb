@@ -3,4 +3,6 @@ class Resume < ApplicationRecord
   
   has_many :job_applications, dependent: :destroy
   has_one_attached :file
+
+  validates :file, presence: true 
 end

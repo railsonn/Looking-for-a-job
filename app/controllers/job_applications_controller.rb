@@ -25,8 +25,6 @@ class JobApplicationsController < ApplicationController
     @job_application = @job.job_applications.build(job_application_params)
     @resume = Resume.find(params[:job_application][:resume_id]) 
 
-
-
     set_associations
 
     if @job_application.save

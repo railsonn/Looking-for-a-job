@@ -53,9 +53,7 @@
             </td>
 
             <td class="text-center">
-              <%= link_to "Ver", job_job_application_path(application.job, application), class: "btn btn-sm btn-primary" %>
-
-              <%= link_to "Editar", edit_job_job_application_path(application.job, application), class: "btn btn-sm btn-warning" %>
+              <%= link_to "Ver", job_path(application.job, application), class: "btn btn-sm btn-primary" %>
             </td>
           </tr>
         <% end %>
