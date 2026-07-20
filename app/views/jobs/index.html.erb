@@ -9,13 +9,8 @@
 <details class="menu-options">
   <summary>⋮</summary>
   <div class="menu-dropdown">
-    <%= link_to "Aplicações", "jobs/current_user.id/job_applications" %>
-    <%= link_to "Excluir",
-        "#",
-        data: {
-          turbo_method: :delete,
-          turbo_confirm: "Tem certeza?"
-        } %>
+    <%= link_to "Aplicações", job_applications_path() %>
+    <%= link_to "sair", destroy_user_session_path(), data: { turbo_method: :delete } %>
   </div>
 </details>
 
