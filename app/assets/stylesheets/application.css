@@ -11,10 +11,11 @@
 
 
 /** style menu **/
+
 .menu-options {
     position: absolute;
-    right: 30px;
     top: 30px;
+    right: 30px;
 }
 
 .menu-options summary {
@@ -51,6 +52,27 @@
 .menu-dropdown a:hover {
     background: #f5f5f5;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+/** resume style **/
 
 
 .resume-preview{
