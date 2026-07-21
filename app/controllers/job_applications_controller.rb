@@ -23,6 +23,9 @@ class JobApplicationsController < ApplicationController
   end
 
   def create
+    unless params[:cover_letter].present?
+      redirect_to new_job_job_application_path, alert: "campo invalido"
+    end
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
     @resume = Resume.find(params[:job_application][:resume_id]) 
