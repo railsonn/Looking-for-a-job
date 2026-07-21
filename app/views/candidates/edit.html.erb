@@ -21,18 +21,13 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label :phone, "Telefone", class: "form-label" %>
+          <%= f.label :number, "Telefone", class: "form-label" %>
           <%= f.telephone_field :phone, class: "form-control" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :birth_date, "Data de nascimento", class: "form-label" %>
+          <%= f.label :birthday, "Data de nascimento", class: "form-label" %>
           <%= f.date_field :birth_date, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :bio, "Sobre você", class: "form-label" %>
-          <%= f.text_area :bio, rows: 5, class: "form-control" %>
         </div>
 
         <%= f.submit "Salvar", class: "btn btn-primary" %>

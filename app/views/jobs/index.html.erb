@@ -9,9 +9,7 @@
 <details class="menu-options">
   <summary>⋮</summary>
   <div class="menu-dropdown">
-    if current_user.candidate.job_applications.present?
-      <%= link_to "Aplicações", job_applications_path() %>
-    end
+    <%= link_to "Aplicações", job_applications_path() %>
     <%= link_to "sair", destroy_user_session_path(), data: { turbo_method: :delete } %>
   </div>
 </details>

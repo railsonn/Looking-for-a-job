@@ -1,10 +1,11 @@
 class JobApplicationsController < ApplicationController
   def index
-    if current_user.candidate.job_applications.
     @job_applications = current_user.candidate
                                     .job_applications
                                     .includes(:job, :company, :resume)
                                     .order(created_at: :desc)
+
+    redirect_to root_path, alert: "Você ainda não possui candidaturas." if @job_applications.empty?
   end
 
   def edit
