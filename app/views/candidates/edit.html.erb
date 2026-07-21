@@ -30,6 +30,11 @@
           <%= f.date_field :birth_date, class: "form-control" %>
         </div>
 
+        <div class="mb-3">
+          <%= f.label :website, "Portfólio / LinkedIn", class: "form-label" %>
+          <%= f.url_field :website, class: "form-control", placeholder: "https://linkedin.com/in/seu-perfil" %>
+        </div>
+
         <%= f.submit "Salvar", class: "btn btn-primary" %>
 
       <% end %>
