@@ -1,5 +1,12 @@
 <div class="job-application-container">
 
+  <% if notice.present? %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+
   <div class="page-header">
     <h1>Candidatar-se à vaga</h1>
     <p>Anexe seu currículo e, se desejar, escreva uma carta de apresentação.</p>
@@ -52,13 +59,13 @@
 
   <div class="job-card">
     <div>
-      <strong>Name:</strong> 
+      <strong>Name: <%= current_user.candidate.name %></strong> 
     </div>
     <div>
-      <strong>Email:</strong> 
+      <strong>Email: <%= current_user.candidate.email %></strong> 
     </div>
     <div>
-      <strong>Website:</strong> 
+      <strong>Website: <%= current_user.candidate.email %></strong> 
     </div>
   </div>  
   
