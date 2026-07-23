@@ -1,5 +1,22 @@
 <div class="job-form-container">
 
+  <% if alert.present? %>
+    <div class="custom-alert">
+      <div class="alert-icon">
+        ⚠️
+      </div>
+
+      <div class="alert-content">
+        <strong>Atenção</strong>
+        <p><%= alert %></p>
+      </div>
+
+      <button class="alert-close" onclick="this.parentElement.remove()">
+        &times;
+      </button>
+    </div>
+  <% end %>
+
   <div class="page-header">
     <div>
       <h1>Nova Vaga</h1>

@@ -9,12 +9,12 @@ class JobsController < ApplicationController
   end
 
   def create
-    unless job_params[:company_id].present?
+    @job = Job.new(job_params)
+
+    unless @job[:company_id].present?
       redirect_to new_job_path, alert: "Campo obrigatório vazio"
       return
     end
-    
-    @job = Job.new(job_params)
     
     if @job.save
       redirect_to jobs_path, notice: 'Job was successfully created.'
