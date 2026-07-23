@@ -1,2 +1,82 @@
-<h1>Candidate#index</h1>
-<p>Find me in app/views/candidate/index.html.erb</p>
+<div class="candidates-container">
+
+  <div class="page-header">
+    <div>
+      <h1>Candidatos</h1>
+      <p>Gerencie os candidatos cadastrados na plataforma.</p>
+    </div>
+
+    <%= link_to "Novo Candidato", new_candidate_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @candidates.any? %>
+
+    <div class="table-card">
+      <table class="candidate-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Website</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @candidates.each do |candidate| %>
+            <tr>
+              <td>
+                <strong><%= "#{candidate.name} #{candidate.lastName}" %></strong>
+              </td>
+
+              <td><%= candidate.email %></td>
+
+              <td><%= candidate.number %></td>
+
+              <td>
+                <% if candidate.website.present? %>
+                  <%= link_to "Abrir",
+                      candidate.website,
+                      target: "_blank",
+                      rel: "noopener" %>
+                <% else %>
+                  <span class="text-muted">Não informado</span>
+                <% end %>
+              </td>
+
+              <td>
+                <div class="actions">
+                  <%= link_to "Ver", candidate_path(candidate), class: "btn btn-info btn-sm" %>
+
+                  <%= link_to "Editar", edit_candidate_path(candidate), class: "btn btn-warning btn-sm" %>
+
+                  <%= link_to "Excluir",
+                      candidate_path(candidate),
+                      class: "btn btn-danger btn-sm",
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Deseja realmente excluir?"
+                      } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+
+  <% else %>
+
+    <div class="empty-state">
+      <h3>Nenhum candidato encontrado</h3>
+
+      <p>Cadastre um candidato para começar.</p>
+
+      <%= link_to "Cadastrar", new_candidate_path, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>
